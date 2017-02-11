@@ -1,24 +1,23 @@
-# README
+# MineSweeper game API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## App setup
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
+* Ruby 2.3.1
 
 * Database creation
 
-* Database initialization
+rake db:migrate
 
 * How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+rake test
 
 * Deployment instructions
 
-* ...
+Usual git push to Heroku repo
+
+## Models
+
+* User
+* Game
+* Board
