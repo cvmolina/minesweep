@@ -43,9 +43,31 @@ class BoardTest < ActiveSupport::TestCase
     board.to_a.flatten.each { |c| assert_valid_cell_value c }
   end
 
+  test 'generate a board with n mines' do
+    w, h = 4, 5
+    (1..(w * h - 1)).each do |num_mines|
+      board = Board.new width: w, height: h, num_mines: num_mines
+      result = board.generate!
+
+      # result grid has w*h size
+      assert result.size, w * h
+
+      # result is asign to grid attribute
+      assert_equal result, board.grid
+
+      # generated cells contains valid values
+      result.chars.each { |c| assert_valid_cell_value c }
+    end
+  end
+
+  test 'do not generate on invalid board' do
+    board = Board.new width: 2, height: 2, num_mines: 10
+    assert_raises(RuntimeError) { board.generate! }
+  end
+
   private
 
   def assert_valid_cell_value(char)
-    assert [' ', '*'].include?(char), 'not a cell value'
+    assert [' ', '*'].include?(char), 'not a valid cell value'
   end
 end

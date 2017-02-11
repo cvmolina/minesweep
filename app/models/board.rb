@@ -10,6 +10,13 @@ class Board < ApplicationRecord
     grid.scan(/.{#{width}}/).map(&:chars)
   end
 
+  def generate!
+    raise 'invalid board' unless valid?
+    clean_board
+    num_mines.times { plant_mine }
+    grid
+  end
+
   private
 
   def too_many_mines
@@ -20,5 +27,17 @@ class Board < ApplicationRecord
 
   def clean_board
     self.grid = ' ' * width * height
+  end
+
+  def plant_mine
+    begin
+      x = rand width
+      y = rand height
+    end while mine_at? x, y
+    grid[(y * width) + x] = '*'
+  end
+
+  def mine_at?(x, y)
+    grid[(y * width) + x] == '*'
   end
 end
