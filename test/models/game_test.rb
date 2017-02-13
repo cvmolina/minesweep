@@ -69,6 +69,6 @@ class GameTest < ActiveSupport::TestCase
   private
 
   def assert_valid_cell_value(char)
-    assert [' ', '*'].include?(char), 'not a valid cell value'
+    assert_match /[012345678*\s]/, char, "not a valid cell value: #{char}"
   end
 end
