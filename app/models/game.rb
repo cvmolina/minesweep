@@ -1,18 +1,18 @@
-# Represents a Mineswipper game board
-class Board < ApplicationRecord
+# Represents a Mineswipper game
+class Game < ApplicationRecord
   validates_presence_of :width, :num_mines, :height
   validates :width, :height, numericality: { only_integer: true, greater_than: 1 }
   validates :num_mines, numericality: { only_integer: true, greater_than: 0 }
   validate :too_many_mines
 
   def to_a
-    clean_board if grid.blank? || grid.size != width * height
+    clean_game if grid.blank? || grid.size != width * height
     grid.scan(/.{#{width}}/).map(&:chars)
   end
 
   def generate!
-    raise 'invalid board' unless valid?
-    clean_board
+    raise 'invalid game' unless valid?
+    clean_game
     num_mines.times { plant_mine }
     grid
   end
@@ -25,7 +25,7 @@ class Board < ApplicationRecord
     errors.add :num_mines, 'too many mines for field size'
   end
 
-  def clean_board
+  def clean_game
     self.grid = ' ' * width * height
   end
 
