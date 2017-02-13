@@ -1,9 +1,7 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+david:
+  email: david@here.com
+  name: David Smith
 
-one:
-  email: MyString
-  name: MyString
-
-two:
-  email: MyString
-  name: MyString
+Jane:
+  email: jane@corp.com
+  name: Jane Steward
