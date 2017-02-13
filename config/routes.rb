@@ -15,7 +15,8 @@ Rails.application.routes.draw do
 
       resources :users, only: [:create, :index] do
         member do
-          resources :games, concerns: [:playable], only: [:create, :index] do
+          resources :games, concerns: [:playable],
+            only: [:create, :index, :show] do
           end
         end
       end

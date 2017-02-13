@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  width: 1
-  num_mines: 1
-  height: 1
-  grid: MyText
+easy:
+  width: 9
+  height: 9
+  num_mines: 10
+  user: david
 
-two:
-  width: 1
-  num_mines: 1
-  height: 1
-  grid: MyText
+hard:
+  width: 30
+  height: 20
+  num_mines: 100
+  user: david

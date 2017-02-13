@@ -46,6 +46,8 @@ Usual git push to Heroku repo
 * POST /api/v1/guess/:id/games/new              api/v1/games#create
     Params: width, height, num_mines
 
+* GET  /api/v1/users/:id/games/:id              api/v1/games#show
+
 * POST /api/v1/users/:id/games/:id/step_on      api/v1/games#step_on
     Params: x, y
 
