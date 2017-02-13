@@ -1,6 +1,9 @@
 # Represents a Mineswipper game
 class Game < ApplicationRecord
-  validates_presence_of :width, :num_mines, :height
+  belongs_to :user
+  alias_attribute :owner, :user
+
+  validates_presence_of :width, :num_mines, :height, :user
   validates :width, :height, numericality: { only_integer: true, greater_than: 1 }
   validates :num_mines, numericality: { only_integer: true, greater_than: 0 }
   validate :too_many_mines
